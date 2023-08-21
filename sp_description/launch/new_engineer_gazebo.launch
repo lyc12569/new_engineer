@@ -1,0 +1,16 @@
+<launch>
+  <param
+    name="robot_description"
+    command="$(find xacro)/xacro $(find sp_description)/urdf/engineer_framed/engineer_framed.xacro" />
+    
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <include file="$(find sp_description)/launch/arm_gazebo_controller.launch" />
+
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -model engineer_framed -param robot_description"
+    output="screen" />
+
+</launch>

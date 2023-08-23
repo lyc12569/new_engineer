@@ -21,7 +21,7 @@
     <xacro:manipulator_transmission joint_name="joint6" mechanical_reduction="1"/>
     <xacro:manipulator_transmission joint_name="joint7" mechanical_reduction="599.99"/>
 
-    <gazebo>
+    <!-- <gazebo>
         <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
             <robotNamespace>/vacuum_gripper</robotNamespace>
             <bodyName>vacuum_gripper</bodyName>
@@ -41,6 +41,6 @@
         <ki>2.0</ki>
         <material>Gazebo/Grey</material>
     </gazebo>
-	
+	 -->
    
 </robot>

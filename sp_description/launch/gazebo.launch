@@ -2,15 +2,15 @@
   <param
     name="robot_description"
     command="$(find xacro)/xacro $(find sp_description)/urdf/engineer_manipulator/engineer.xacro" />
-
-  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
-  <include file="$(find sp_description)/launch/test.launch" />
-  <!---
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <!--<arg name="world_name" value="$(find sp_gazebosim)/worlds/test.world"/>-->
+  </include>
   <node
     name="tf_footprint_base"
     pkg="tf"
     type="static_transform_publisher"
-    args="0 0 0 0 0 0 base_link base_footprint 40" />-->
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
   <node
     name="spawn_model"
     pkg="gazebo_ros"
@@ -19,4 +19,3 @@
     output="screen" />
 
 </launch>
-

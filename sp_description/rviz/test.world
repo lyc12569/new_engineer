@@ -1,0 +1,1010 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='engineer_framed'>
+      <link name='base_link'>
+        <inertial>
+          <pose>-0.053775 -0.564649 0.076172 0 -0 0</pose>
+          <mass>9.7675</mass>
+          <inertia>
+            <ixx>0.21156</ixx>
+            <ixy>-0.00106535</ixy>
+            <ixz>0.0146759</ixz>
+            <iyy>0.197019</iyy>
+            <iyz>0.0102262</iyz>
+            <izz>0.0641362</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__arm_base_link_collision_1'>
+          <pose>-0.044504 -0.55819 -0.012391 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/arm_base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__arm_base_link_visual_1'>
+          <pose>-0.044504 -0.55819 -0.012391 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/arm_base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint1_fl' type='revolute'>
+        <pose relative_to='base_link'>-0.24531 -0.3683 -0.05551 1.5708 -0.088599 -1.5708</pose>
+        <parent>base_link</parent>
+        <child>link1_fl</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1_fl'>
+        <pose relative_to='joint1_fl'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>3.7e-05 -0.000103 0.024042 0 -0 0</pose>
+          <mass>0.70318</mass>
+          <inertia>
+            <ixx>0.0011574</ixx>
+            <ixy>1.4786e-09</ixy>
+            <ixz>-6.9963e-12</ixz>
+            <iyy>0.001172</iyy>
+            <iyz>1.7156e-09</iyz>
+            <izz>0.0022157</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_fl_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link1_fl_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint2_fr' type='revolute'>
+        <pose relative_to='base_link'>0.11159 -0.3683 -0.05551 -1.5708 -0.81082 -1.5708</pose>
+        <parent>base_link</parent>
+        <child>link2_fr</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2_fr'>
+        <pose relative_to='joint2_fr'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.000513 0.000303 0.067842 0 -0 0</pose>
+          <mass>0.69776</mass>
+          <inertia>
+            <ixx>0.0011572</ixx>
+            <ixy>1.4786e-09</ixy>
+            <ixz>-6.9974e-12</ixz>
+            <iyy>0.0011718</iyy>
+            <iyz>1.7156e-09</iyz>
+            <izz>0.0022157</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_fr_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link2_fr_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint3_bl' type='revolute'>
+        <pose relative_to='base_link'>-0.20121 -0.7517 -0.05551 1.5708 0.8753 -1.5708</pose>
+        <parent>base_link</parent>
+        <child>link3_bl</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <effort>0</effort>
+            <velocity>0</velocity>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3_bl'>
+        <pose relative_to='joint3_bl'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.000429 -4.5e-05 0.068188 0 -0 0</pose>
+          <mass>0.68237</mass>
+          <inertia>
+            <ixx>0.0011484</ixx>
+            <ixy>1.4786e-09</ixy>
+            <ixz>-6.9966e-12</ixz>
+            <iyy>0.001163</iyy>
+            <iyz>1.7156e-09</iyz>
+            <izz>0.0021982</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_bl_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link3_bl_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint4_br' type='revolute'>
+        <pose relative_to='base_link'>0.15569 -0.75167 -0.055404 1.5708 -0.089686 1.5708</pose>
+        <parent>base_link</parent>
+        <child>link4_br</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4_br'>
+        <pose relative_to='joint4_br'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.000202 -4e-06 0.023775 0 -0 0</pose>
+          <mass>0.70951</mass>
+          <inertia>
+            <ixx>0.0011574</ixx>
+            <ixy>1.4786e-09</ixy>
+            <ixz>-6.9966e-12</ixz>
+            <iyy>0.001172</iyy>
+            <iyz>1.7156e-09</iyz>
+            <izz>0.0022157</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_br_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link4_br_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint1' type='prismatic'>
+        <pose relative_to='base_link'>-0.044504 -0.55819 -0.012391 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.3012</lower>
+            <upper>0</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1'>
+        <pose relative_to='joint1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.046418 -0.011017 0.39513 0 -0 0</pose>
+          <mass>3.3312</mass>
+          <inertia>
+            <ixx>0.0042512</ixx>
+            <ixy>-2.4588e-07</ixy>
+            <ixz>4.5056e-06</ixz>
+            <iyy>0.047104</iyy>
+            <iyz>-5.1474e-08</iyz>
+            <izz>0.050684</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link1.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint2' type='prismatic'>
+        <pose relative_to='link1'>-0.273 0 0.3831 0 -0 0</pose>
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0.86634</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2'>
+        <pose relative_to='joint2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.73763 -0.012605 0.069937 0 -0 0</pose>
+          <mass>3.3677</mass>
+          <inertia>
+            <ixx>0.00060317</ixx>
+            <ixy>-1.317e-07</ixy>
+            <ixz>-5.0363e-06</ixz>
+            <iyy>0.059389</iyy>
+            <iyz>2.5076e-07</iyz>
+            <izz>0.059509</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link2.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link2_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link2.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint3' type='prismatic'>
+        <pose relative_to='link2'>0.42794 0 0.072 0 -0 0</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>-1 0 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0.4754</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3'>
+        <pose relative_to='joint3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.51093 0.000566 0.038621 0 -0 0</pose>
+          <mass>0.53167</mass>
+          <inertia>
+            <ixx>0.0064934</ixx>
+            <ixy>-2.3958e-07</ixy>
+            <ixz>8.5458e-09</ixz>
+            <iyy>9.996e-05</iyy>
+            <iyz>2.0423e-08</iyz>
+            <izz>0.0065666</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link3.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link3_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link3.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint4' type='prismatic'>
+        <pose relative_to='link3'>0.5097 0 0.034 0 -0 0</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-0.4</lower>
+            <upper>0.4</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4'>
+        <pose relative_to='joint4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.002218 0.055912 0.11366 0 -0 0</pose>
+          <mass>2.56</mass>
+          <inertia>
+            <ixx>0.0074237</ixx>
+            <ixy>-1.2559e-06</ixy>
+            <ixz>-6.9104e-06</ixz>
+            <iyy>0.00083452</iyy>
+            <iyz>-5.1569e-07</iyz>
+            <izz>0.0075779</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link4.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link4_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link4.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint5' type='revolute'>
+        <pose relative_to='link4'>0 -0.019 0.128 1.5708 -0 0</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>3.14</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link5'>
+        <pose relative_to='joint5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.037482 0.001155 -0.028017 0 -0 0</pose>
+          <mass>0.31809</mass>
+          <inertia>
+            <ixx>0.00016271</ixx>
+            <ixy>-1.8762e-07</ixy>
+            <ixz>-1.4951e-07</ixz>
+            <iyy>9.8184e-05</iyy>
+            <iyz>4.2357e-09</iyz>
+            <izz>9.9246e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link5.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link5_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint6' type='revolute'>
+        <pose relative_to='link5'>0.071794 0 -0.028 3.14159 1.57079 3.14159</pose>
+        <parent>link5</parent>
+        <child>link6</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link6'>
+        <pose relative_to='joint6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.000105 0.14059 -0.005548 0 -0 0</pose>
+          <mass>0.63735</mass>
+          <inertia>
+            <ixx>0.00027146</ixx>
+            <ixy>1.1047e-08</ixy>
+            <ixz>2.2272e-07</ixz>
+            <iyy>0.00027079</iyy>
+            <iyz>2.9582e-06</iyz>
+            <izz>0.0002496</izz>
+          </inertia>
+        </inertial>
+        <collision name='link6_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link6.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link6_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link6.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint7' type='revolute'>
+        <pose relative_to='link6'>0 0.17579 -0.071794 1.5708 -0 -3.14159</pose>
+        <parent>link6</parent>
+        <child>link7</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>0</effort>
+            <velocity>0</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link7'>
+        <pose relative_to='joint7'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.001318 -0.057506 0.034955 0 -0 0</pose>
+          <mass>0.19723</mass>
+          <inertia>
+            <ixx>0.00010859</ixx>
+            <ixy>-1.059e-06</ixy>
+            <ixz>2.4478e-08</ixz>
+            <iyy>6.2669e-05</iyy>
+            <iyz>3.9133e-08</iyz>
+            <izz>0.00015495</izz>
+          </inertia>
+        </inertial>
+        <collision name='link7_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link7.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='link7_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lyc/VisualOdometry/src/sp_description/meshes/engineer_framed/engineer_manipulator_framed/link7.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/engineer_framed</robotNamespace>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>205 501000000</sim_time>
+      <real_time>326 866768455</real_time>
+      <wall_time>1692682947 376907656</wall_time>
+      <iterations>205501</iterations>
+      <model name='engineer_framed'>
+        <pose>0.017352 -0.185397 0.132203 -0.000393 0.000623 -0.072125</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>0.017352 -0.185397 0.132203 -0.000393 0.000623 -0.072125</pose>
+          <velocity>-0.000186 -0.007996 -0.005096 -0.014362 -0.004981 0.00091</velocity>
+          <acceleration>-1.91817 -0.112049 2.21992 -1.62843 0.12417 2.91161</acceleration>
+          <wrench>-18.7357 -1.09443 21.6831 0 -0 0</wrench>
+        </link>
+        <link name='link1'>
+          <pose>-0.067461 -0.738984 -0.181143 -0.000313 0.000623 -0.072124</pose>
+          <velocity>0.002041 -0.012238 0.00325 -0.01498 -0.005143 0.000592</velocity>
+          <acceleration>-1.8868 1.24495 1.67318 -2.63053 0.891576 -0.583845</acceleration>
+          <wrench>-6.28532 4.14719 5.57371 0 -0 0</wrench>
+        </link>
+        <link name='link1_fl'>
+          <pose>-0.253897 -0.535081 0.076987 1.57009 -0.229515 -1.64276</pose>
+          <velocity>0.000424 -0.009181 -0.000415 0.024702 -0.023774 0.00065</velocity>
+          <acceleration>0.534577 -6.98669 -11.477 1.60128 0.608136 1.56634</acceleration>
+          <wrench>0.375904 -4.9129 -8.07041 0 -0 0</wrench>
+        </link>
+        <link name='link2'>
+          <pose>-0.339779 -0.719159 0.202173 5.6e-05 0.000699 -0.072123</pose>
+          <velocity>3.4e-05 -0.006316 0.001889 -0.016423 -0.005349 0.00043</velocity>
+          <acceleration>0.131242 2.01802 11.6572 -2.23503 -0.54027 -0.363909</acceleration>
+          <wrench>0.441985 6.79608 39.2578 0 -0 0</wrench>
+        </link>
+        <link name='link2_fr'>
+          <pose>0.102072 -0.560807 0.076803 1.57152 0.000669 1.49856</pose>
+          <velocity>0.000118 -0.008102 0.001341 0.078086 0.000893 0.025024</velocity>
+          <acceleration>-0.016146 -10.3759 -9.65776 0.537266 1.51665 -1.40914</acceleration>
+          <wrench>-0.011266 -7.23992 -6.7388 0 -0 0</wrench>
+        </link>
+        <link name='link3'>
+          <pose>0.087008 -0.750009 0.274948 -0.001165 0.002744 -0.072129</pose>
+          <velocity>-0.011336 -0.004366 0.062479 -0.004165 0.119672 -0.00022</velocity>
+          <acceleration>-7.18973 0.921319 6.25998 -0.107314 0.334232 1.57818</acceleration>
+          <wrench>-3.82256 0.489838 3.32824 0 -0 0</wrench>
+        </link>
+        <link name='link3_bl'>
+          <pose>-0.237541 -0.920663 0.077116 -1.54877 1.54204 1.52069</pose>
+          <velocity>0.000705 -0.009112 0.004033 -0.092682 0.000769 9.2e-05</velocity>
+          <acceleration>-1.5095 -6.74109 9.8993 -0.708164 -1.28077 0.888451</acceleration>
+          <wrench>-1.03004 -4.59992 6.75498 0 -0 0</wrench>
+        </link>
+        <link name='link4'>
+          <pose>0.624206 -0.389257 0.307031 -0.001241 0.002222 -0.072119</pose>
+          <velocity>-0.007435 0.008409 -0.002824 -0.002797 0.077556 0.00109</velocity>
+          <acceleration>1.63817 -0.206253 1.15049 0.405726 0.475588 -1.84535</acceleration>
+          <wrench>4.1937 -0.528008 2.94524 0 -0 0</wrench>
+        </link>
+        <link name='link4_br'>
+          <pose>0.118434 -0.946351 0.076996 -1.5718 0.936458 -1.64373</pose>
+          <velocity>0.000241 -0.008991 0.007328 0.11678 0.002949 7.7e-05</velocity>
+          <acceleration>-2.04007 -9.63697 17.8164 -1.25151 -1.55504 -0.41537</acceleration>
+          <wrench>-1.44745 -6.83753 12.6409 0 -0 0</wrench>
+        </link>
+        <link name='link5'>
+          <pose>0.623133 -0.408069 0.435034 -1.5696 -0.003835 3.06948</pose>
+          <velocity>0.002776 0.008988 -0.004964 0.001781 0.09915 0.002721</velocity>
+          <acceleration>2.79848 0.260582 2.00584 -0.615193 0.707879 -2.4504</acceleration>
+          <wrench>0.890169 0.082888 0.638037 0 -0 0</wrench>
+        </link>
+        <link name='link6'>
+          <pose>0.553546 -0.374966 0.435269 -1.56717 -0.059541 1.49846</pose>
+          <velocity>0.003959 0.008872 0.001672 0.135352 0.058915 0.001771</velocity>
+          <acceleration>-1.45706 0.286521 4.57115 2.57117 0.937082 1.66592</acceleration>
+          <wrench>-0.928656 0.182614 2.91342 0 -0 0</wrench>
+        </link>
+        <link name='link7'>
+          <pose>0.625273 -0.369661 0.259527 3.08197 -0.001881 3.09901</pose>
+          <velocity>-0.006338 0.032799 -0.002184 0.135919 0.049156 0.198384</velocity>
+          <acceleration>-0.900363 0.143279 1.0316 0.826868 0.677741 2.15597</acceleration>
+          <wrench>-0.177579 0.028259 0.203462 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>5 -5 2 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

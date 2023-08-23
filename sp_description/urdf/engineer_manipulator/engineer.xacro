@@ -32,8 +32,7 @@
 		</plugin>
 		<plugin name="gimbal_controller" filename="libgimbal_controller.so">
 			<robotNamespace>/</robotNamespace>
-		</plugin>
-	</gazebo>
-	
+		</plugin>  
+	</gazebo>    
 </robot>
 

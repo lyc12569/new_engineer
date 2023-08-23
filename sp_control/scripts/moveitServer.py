@@ -67,11 +67,11 @@ class MoveIt_Control:
         # try:
         print("Test for robot...")
         # self.go_home()
-        # self.move_j([0, 0.2, 0, 0, 0.5, 0.5,0.5],a=0.5,v=0.5)
+        self.move_j([0, 0.2, 0, 0, 0.5, 0.5,0.5],a=0.5,v=0.5)
         # rospy.sleep(2)
         
-        self.move_p([-0.04,0.225, 0.799, 3.1408791693424214, 0.19548416616730288, 3.1389621847279248])
-        rospy.sleep(5)
+        # self.move_p([-0.04,0.225, 0.799, 3.1408791693424214, 0.19548416616730288, 3.1389621847279248])
+        # rospy.sleep(5)
         # self.set_constraints()
         # self.move_l([0.4, 0.1, 0.4, -np.pi, 0, 0] )
         # rospy.sleep(2)
@@ -105,6 +105,7 @@ class MoveIt_Control:
         # 设置机械臂的目标位置，使用六轴的位置数据进行描述（单位：弧度）
         if joint_configuration==None:
             joint_configuration = [0, -1.5707, 0, -1.5707, 0, 0]
+        self.arm.set_start_state_to_current_state();    
         self.arm.set_max_acceleration_scaling_factor(a)
         self.arm.set_max_velocity_scaling_factor(v)
         self.arm.set_joint_value_target(joint_configuration)
@@ -341,17 +342,18 @@ def plan_callback(data,moveit_server):
         controller_values_initial = data
         if droll != 0 or dpitch != 0 or dyaw != 0 or dx != 0 or dy != 0 or dz != 0:
             current_pose = moveit_server.arm.get_current_pose()
-            (croll, cpitch, cyaw) = euler_from_quaternion([current_pose.pose.orientation.x, current_pose.pose.orientation.y, current_pose.pose.orientation.z, current_pose.pose.orientation.w])
-            next_pose = [-0.01,0.01,0.01,0.01,0.01,0.01]
-            # print(current_pose)
-            next_pose[0] = current_pose.pose.position.x + dx
-            next_pose[1] = current_pose.pose.position.y + dy
-            next_pose[2] = current_pose.pose.position.z + dz
-            next_pose[3] = croll + droll
-            next_pose[4] = cpitch + dpitch
-            next_pose[5] = cyaw + dyaw
-            # print(next_pose)
-            moveit_server.move_p(next_pose)   
+            print(current_pose)
+            # (croll, cpitch, cyaw) = euler_from_quaternion([current_pose.pose.orientation.x, current_pose.pose.orientation.y, current_pose.pose.orientation.z, current_pose.pose.orientation.w])
+            # next_pose = [-0.01,0.01,0.01,0.01,0.01,0.01]
+            # # print(current_pose)
+            # next_pose[0] = current_pose.pose.position.x + dx
+            # next_pose[1] = current_pose.pose.position.y + dy
+            # next_pose[2] = current_pose.pose.position.z + dz
+            # next_pose[3] = croll + droll
+            # next_pose[4] = cpitch + dpitch
+            # next_pose[5] = cyaw + dyaw
+            # # print(next_pose)
+            # moveit_server.move_p(next_pose)   
                 
         
         
@@ -364,7 +366,7 @@ if __name__ =="__main__":
     # print(current_values)
     # rospy.init_node("listener_pose")
     # #3.实例化 订阅者 对象
-    sub = rospy.Subscriber("/ORB_SLAM3/pose",PoseStamped,joint_value_callback,moveit_server,queue_size=1)
+    sub = rospy.Subscriber("/ORB_SLAM3/pose",PoseStamped,plan_callback,moveit_server,queue_size=1)
     rospy.spin()
  
     

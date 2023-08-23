@@ -8,73 +8,73 @@
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint1_motor">
             <mechanicalReduction>1.5</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint1">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint2">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint2_motor">
             <mechanicalReduction>6</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint2">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint3">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint3_motor">
             <mechanicalReduction>6</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint3">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint4">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint4_motor">
             <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint4">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint5">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint5_motor">
             <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint5">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint6">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint6_motor">
             <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint6">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
     <transmission name="trans_joint7">
         <type>transmission_interface/SimpleTransmission</type>
         <actuator name="joint7_motor">
             <mechanicalReduction>599.99</mechanicalReduction>
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
         <joint name="joint7">
-            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
-    <!--<gazebo>
+    <!-- <gazebo>
         <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
             <robotNamespace>/vacuum_gripper</robotNamespace>
             <bodyName>vacuum_gripper</bodyName>
@@ -93,12 +93,13 @@
         <kd>1.0</kd>
         <ki>2.0</ki>
         <material>Gazebo/Grey</material>
-    </gazebo>-->
+    </gazebo>
+	 -->
     <link name="arm_base_link">
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.037522 -0.068476 0.28458" />
-            <mass value="1.851" />
-            <inertia ixx="0.013502" ixy="1.5471E-07" ixz="-1.0797E-06" iyy="0.013899" iyz="2.8303E-07" izz="0.00075044" />
+            <origin rpy="0 0 0" xyz="-0.02624 -0.018282 0.25067" />
+            <mass value="3.4509" />
+            <inertia ixx="0.030137" ixy="-1.2844E-07" ixz="-3.1208E-06" iyy="0.030724" iyz="3.4634E-08" izz="0.0009827" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -118,9 +119,9 @@
     </link>
     <link name="link1">
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.046385 -0.011064 0.39469" />
-            <mass value="3.3269" />
-            <inertia ixx="0.0042506" ixy="-2.4588E-07" ixz="4.5157E-06" iyy="0.047094" iyz="-5.1474E-08" izz="0.050675" />
+            <origin rpy="0 0 0" xyz="-0.046418 -0.011017 0.39513" />
+            <mass value="3.3312" />
+            <inertia ixx="0.0042512" ixy="-2.4588E-07" ixz="4.5056E-06" iyy="0.047104" iyz="-5.1474E-08" izz="0.050684" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -143,11 +144,11 @@
         <parent link="arm_base_link" />
         <child link="link1" />
         <axis xyz="0 0 1" />
-        <limit effort="0" lower="-0.3012" upper="0" velocity="0" />
+        <limit effort="20" lower="-0.3012" upper="0" velocity="6" />
     </joint>
     <link name="link2">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.73463 -0.012605 0.039937" />
+            <origin rpy="0 0 0" xyz="0.73763 -0.012605 0.069937" />
             <mass value="3.3677" />
             <inertia ixx="0.00060317" ixy="-1.317E-07" ixz="-5.0363E-06" iyy="0.059389" iyz="2.5076E-07" izz="0.059509" />
         </inertial>
@@ -168,17 +169,17 @@
         </collision>
     </link>
     <joint name="joint2" type="prismatic">
-        <origin rpy="0 0 0" xyz="-0.27 0 0.4126" />
+        <origin rpy="0 0 0" xyz="-0.273 0 0.3831" />
         <parent link="link1" />
         <child link="link2" />
         <axis xyz="-1 0 0" />
-        <limit effort="0" lower="0" upper="0.4394" velocity="0" />
+        <limit effort="20" lower="0" upper="0.86634" velocity="6" />
     </joint>
     <link name="link3">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.51092 0.0050158 0.038576" />
-            <mass value="0.53637" />
-            <inertia ixx="0.006721" ixy="-1.2751E-06" ixz="5.8146E-09" iyy="0.00010173" iyz="3.4689E-08" izz="0.0067953" />
+            <origin rpy="0 0 0" xyz="0.51093 0.000566 0.038621" />
+            <mass value="0.53167" />
+            <inertia ixx="0.0064934" ixy="-2.3958E-07" ixz="8.5458E-09" iyy="9.996E-05" iyz="2.0423E-08" izz="0.0065666" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -197,17 +198,17 @@
         </collision>
     </link>
     <joint name="joint3" type="prismatic">
-        <origin rpy="0 0 0" xyz="0.42494 0 0.042" />
+        <origin rpy="0 0 0" xyz="0.42794 0 0.072" />
         <parent link="link2" />
         <child link="link3" />
         <axis xyz="-1 0 0" />
-        <limit effort="0" lower="0" upper="0.4754" velocity="0" />
+        <limit effort="20" lower="0" upper="0.4754" velocity="6" />
     </joint>
     <link name="link4">
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.004492 0.0012594 0.076929" />
-            <mass value="1.4781" />
-            <inertia ixx="0.00699" ixy="-4.5494E-07" ixz="-1.6934E-07" iyy="0.00040962" iyz="-2.7173E-07" izz="0.006972" />
+            <origin rpy="0 0 0" xyz="0.0022176 0.055912 0.11366" />
+            <mass value="2.56" />
+            <inertia ixx="0.0074237" ixy="-1.2559E-06" ixz="-6.9104E-06" iyy="0.00083452" iyz="-5.1569E-07" izz="0.0075779" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -230,13 +231,13 @@
         <parent link="link3" />
         <child link="link4" />
         <axis xyz="0 1 0" />
-        <limit effort="0" lower="-0.017022" upper="0.013858" velocity="0" />
+        <limit effort="20" lower="-0.4" upper="0.4" velocity="6" />
     </joint>
     <link name="link5">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.037482 -0.0011554 0.028017" />
+            <origin rpy="0 0 0" xyz="0.037482 0.0011554 -0.028017" />
             <mass value="0.31809" />
-            <inertia ixx="0.00016271" ixy="1.8762E-07" ixz="1.4951E-07" iyy="9.8184E-05" iyz="4.2357E-09" izz="9.9246E-05" />
+            <inertia ixx="0.00016271" ixy="-1.8762E-07" ixz="-1.4951E-07" iyy="9.8184E-05" iyz="4.2357E-09" izz="9.9246E-05" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -255,17 +256,17 @@
         </collision>
     </link>
     <joint name="joint5" type="revolute">
-        <origin rpy="-1.5708 0 0" xyz="0 -0.007 0.128" />
+        <origin rpy="1.5708 0 0" xyz="0 -0.019 0.128" />
         <parent link="link4" />
         <child link="link5" />
-        <axis xyz="0 0 -1" />
-        <limit effort="0" lower="0" upper="3.14" velocity="0" />
+        <axis xyz="0 0 1" />
+        <limit effort="20" lower="0" upper="3.14" velocity="6" />
     </joint>
     <link name="link6">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.14216 -0.00011579 -0.0086719" />
-            <mass value="0.66912" />
-            <inertia ixx="0.00027285" ixy="1.2504E-08" ixz="2.9576E-06" iyy="0.00027332" iyz="-2.2374E-07" izz="0.00025157" />
+            <origin rpy="0 0 0" xyz="0.0001049 0.14059 -0.0055479" />
+            <mass value="0.63735" />
+            <inertia ixx="0.00027146" ixy="1.1047E-08" ixz="2.2272E-07" iyy="0.00027079" iyz="2.9582E-06" izz="0.0002496" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -284,17 +285,17 @@
         </collision>
     </link>
     <joint name="joint6" type="revolute">
-        <origin rpy="-1.5708 0 -1.5708" xyz="0.071794 0 0.028" />
+        <origin rpy="0 1.5708 0" xyz="0.071794 0 -0.028" />
         <parent link="link5" />
         <child link="link6" />
         <axis xyz="0 0 -1" />
-        <limit effort="0" lower="-1.57" upper="+1.57" velocity="0" />
+        <limit effort="20" lower="-1.57" upper="1.57" velocity="6" />
     </joint>
     <link name="link7">
         <inertial>
-            <origin rpy="0 0 0" xyz="-0.057503 0.0014691 0.022736" />
+            <origin rpy="0 0 0" xyz="-0.0013183 -0.057506 0.034955" />
             <mass value="0.19723" />
-            <inertia ixx="6.2669E-05" ixy="1.059E-06" ixz="3.9133E-08" iyy="0.00010859" iyz="-2.4478E-08" izz="0.00015495" />
+            <inertia ixx="0.00010859" ixy="-1.059E-06" ixz="2.4478E-08" iyy="6.2669E-05" iyz="3.9133E-08" izz="0.00015495" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -313,17 +314,17 @@
         </collision>
     </link>
     <joint name="joint7" type="revolute">
-        <origin rpy="0 -1.5708 0" xyz="0.18801 0.00015076 -0.071797" />
+        <origin rpy="1.5708 0 3.1416" xyz="0 0.17579 -0.071794" />
         <parent link="link6" />
         <child link="link7" />
         <axis xyz="0 0 1" />
-        <limit effort="0" lower="-1.57" upper="+1.57" velocity="0" />
+        <limit effort="20" lower="-1.57" upper="1.57" velocity="6" />
     </joint>
     <link name="base_link">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.011757 0.00020017 -0.0013475" />
-            <mass value="6.2008" />
-            <inertia ixx="0.023597" ixy="-1.3181E-06" ixz="1.6868E-06" iyy="0.039514" iyz="-7.4863E-12" izz="0.059002" />
+            <origin rpy="0 0 0" xyz="-0.044504 -0.55819 -0.012391" />
+            <mass value="6.3166" />
+            <inertia ixx="0.040448" ixy="5.3584E-06" ixz="-4.9021E-09" iyy="0.02453" iyz="-1.0636E-06" izz="0.060871" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -341,16 +342,16 @@
             </geometry>
         </collision>
     </link>
-    <link name="link1_br">
+    <link name="link1_fl">
         <inertial>
-            <origin rpy="0 0 0" xyz="4.6602E-05 -8.1388E-05 0.014341" />
-            <mass value="1.0682" />
-            <inertia ixx="0.001219" ixy="-1.5985E-06" ixz="-2.039E-07" iyy="0.0012336" iyz="2.6013E-07" izz="0.0022924" />
+            <origin rpy="0 0 0" xyz="3.6924E-05 -0.00010328 0.024042" />
+            <mass value="0.70318" />
+            <inertia ixx="0.0011574" ixy="1.4786E-09" ixz="-6.9963E-12" iyy="0.001172" iyz="1.7156E-09" izz="0.0022157" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_br.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
             </geometry>
             <material name="">
                 <color rgba="0.69804 0.69804 0.69804 1" />
@@ -359,54 +360,26 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_br.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
             </geometry>
         </collision>
     </link>
-    <joint name="joint1_br" type="continuous">
-        <origin rpy="1.5708 0 0" xyz="-0.1767 -0.2005 -0.045089" />
+    <joint name="joint1_fl" type="continuous">
+        <origin rpy="1.5708 -0.088599 -1.5708" xyz="-0.24531 -0.3683 -0.05551" />
         <parent link="base_link" />
-        <child link="link1_br" />
-        <axis xyz="0 0 1" />
-    </joint>
-    <link name="link2_bl">
-        <inertial>
-            <origin rpy="0 0 0" xyz="-9.0212E-05 0.00035813 0.014094" />
-            <mass value="1.0628" />
-            <inertia ixx="0.0012262" ixy="7.4801E-06" ixz="7.6834E-08" iyy="0.001226" iyz="3.2147E-07" izz="0.0022924" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_bl.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.69804 0.69804 0.69804 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_bl.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint2_bl" type="continuous">
-        <origin rpy="-1.5708 0 0" xyz="-0.1767 0.2005 -0.045089" />
-        <parent link="base_link" />
-        <child link="link2_bl" />
+        <child link="link1_fl" />
         <axis xyz="0 0 -1" />
     </joint>
-    <link name="link3_fr">
+    <link name="link2_fr">
         <inertial>
-            <origin rpy="0 0 0" xyz="0.0001525 -0.00025626 0.014179" />
-            <mass value="1.0474" />
-            <inertia ixx="0.0012184" ixy="7.4058E-06" ixz="9.7389E-08" iyy="0.0012163" iyz="3.1585E-07" izz="0.0022749" />
+            <origin rpy="0 0 0" xyz="-0.00051287 0.00030252 0.067842" />
+            <mass value="0.69776" />
+            <inertia ixx="0.0011572" ixy="1.4786E-09" ixz="-6.9974E-12" iyy="0.0011718" iyz="1.7156E-09" izz="0.0022157" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_fr.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
             </geometry>
             <material name="">
                 <color rgba="0.69804 0.69804 0.69804 1" />
@@ -415,48 +388,78 @@
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_fr.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
             </geometry>
         </collision>
     </link>
-    <joint name="joint3_fr" type="continuous">
-        <origin rpy="1.5708 0 0" xyz="0.2067 -0.2005 -0.045089" />
+    <joint name="joint2_fr" type="continuous">
+        <origin rpy="-1.5708 -0.81082 -1.5708" xyz="0.11159 -0.3683 -0.05551" />
         <parent link="base_link" />
-        <child link="link3_fr" />
+        <child link="link2_fr" />
+        <axis xyz="0 0 1" />
+    </joint>
+    <link name="link3_bl">
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.00042861 -4.5394E-05 0.068188" />
+            <mass value="0.68237" />
+            <inertia ixx="0.0011484" ixy="1.4786E-09" ixz="-6.9966E-12" iyy="0.001163" iyz="1.7156E-09" izz="0.0021982" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.69804 0.69804 0.69804 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint3_bl" type="continuous">
+        <origin rpy="1.5708 0.8753 -1.5708" xyz="-0.20121 -0.7517 -0.05551" />
+        <parent link="base_link" />
+        <child link="link3_bl" />
         <axis xyz="0 0 1" />
         <limit effort="0" lower="0" upper="0" velocity="0" />
     </joint>
-    <link name="link4_fl">
+    <link name="link4_br">
         <inertial>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <mass value="0" />
-            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+            <origin rpy="0 0 0" xyz="0.00020184 -4.3664E-06 0.023775" />
+            <mass value="0.70951" />
+            <inertia ixx="0.0011574" ixy="1.4786E-09" ixz="-6.9966E-12" iyy="0.001172" iyz="1.7156E-09" izz="0.0022157" />
         </inertial>
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_fl.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
             </geometry>
             <material name="">
-                <color rgba="1 1 1 1" />
+                <color rgba="0.69804 0.69804 0.69804 1" />
             </material>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_fl.STL" />
+                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
             </geometry>
         </collision>
     </link>
-    <joint name="joint4_fl" type="continuous">
-        <origin rpy="-1.5708 0 0" xyz="0.20667 0.2005 -0.044983" />
+    <joint name="joint4_br" type="continuous">
+        <origin rpy="1.5708 -0.089686 1.5708" xyz="0.15569 -0.75167 -0.055404" />
         <parent link="base_link" />
-        <child link="link4_fl" />
-        <axis xyz="0 0 -1" />
+        <child link="link4_br" />
+        <axis xyz="0 0 1" />
     </joint>
+    <!-- <link name="world" />
+	<xacro:engineer_chassis_framed xyz="0 0 0" rpy="0 0 0" connected_to="world"/> -->
     <joint name="joint_arm2body" type="fixed">
         <axis xyz="0 0 1" />
-        <origin rpy="0 0 1.57" xyz="0.011757 0.00020017 -0.0013475" />
+        <origin rpy="0 0 0" xyz="-0.044504 -0.55819 -0.012391" />
         <parent link="base_link" />
         <child link="arm_base_link" />
     </joint>
@@ -466,42 +469,42 @@
             <robotNamespace>/engineer_framed</robotNamespace>
         </plugin>
     </gazebo>
-    <transmission name="trans_joint1_br">
+    <transmission name="trans_joint1_fl">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint1_br">
+        <joint name="joint1_fl">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
-        <actuator name="joint1_br_motor">
+        <actuator name="joint1_fl_motor">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_joint2_bl">
+    <transmission name="trans_joint2_fr">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint2_bl">
+        <joint name="joint2_fr">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
-        <actuator name="joint2_bl_motor">
+        <actuator name="joint2_fr_motor">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_joint3_fr">
+    <transmission name="trans_joint3_bl">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint3_fr">
+        <joint name="joint3_bl">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
-        <actuator name="joint3_fr_motor">
+        <actuator name="joint3_bl_motor">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
     </transmission>
-    <transmission name="trans_joint4_fl">
+    <transmission name="trans_joint4_br">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint4_fl">
+        <joint name="joint4_br">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
-        <actuator name="joint4_fl_motor">
+        <actuator name="joint4_br_motor">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>

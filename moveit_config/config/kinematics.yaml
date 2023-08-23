@@ -4,4 +4,4 @@ manipulator_framed:
   kinematics_solver_timeout: 0.005
   goal_joint_tolerance: 0.0001
   goal_position_tolerance: 0.0001
-  goal_orientation_tolerance: 0.0006999999999999999
+  goal_orientation_tolerance: 0.001

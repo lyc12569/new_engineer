@@ -1,0 +1,23 @@
+engineer_framed:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  manipulator_framed_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints:
+        - joint1
+        - joint2
+        - joint3
+        - joint4
+        - joint5
+        - joint6
+        - joint7
+    gains:
+        joint1: { p: 100000, d: 100, i: 0.01, i_clamp: 10000 }
+        joint2: { p: 30000, d: 10, i: 0.01, i_clamp: 10000 }
+        joint3: { p: 18000, d: 10, i: 0.01, i_clamp: 1 }
+        joint4: { p: 18000, d: 10, i: 0.01, i_clamp: 10000 }
+        joint5: { p: 12000, d: 10, i: 0.01, i_clamp: 1 }
+        joint6: { p: 7000, d: 10, i: 0.01, i_clamp: 1 }
+        joint7: { p: 2000, d: 10, i: 0.01, i_clamp: 1 }

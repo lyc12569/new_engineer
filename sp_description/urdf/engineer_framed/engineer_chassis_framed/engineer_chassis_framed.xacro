@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="engineer_chassis_framed" 
+  xmlns:xacro="http://wiki.ros.org/xacro">
+  
+  <xacro:macro name="engineer_chassis_framed" params="roller_type">
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.044504 -0.55819 -0.012391"
+        rpy="0 0 0" />
+      <mass
+        value="6.3166" />
+      <inertia
+        ixx="0.040448"
+        ixy="5.3584E-06"
+        ixz="-4.9021E-09"
+        iyy="0.02453"
+        iyz="-1.0636E-06"
+        izz="0.060871" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65098 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1_fl">
+    <inertial>
+      <origin
+        xyz="3.6924E-05 -0.00010328 0.024042"
+        rpy="0 0 0" />
+      <mass
+        value="0.70318" />
+      <inertia
+        ixx="0.0011574"
+        ixy="1.4786E-09"
+        ixz="-6.9963E-12"
+        iyy="0.001172"
+        iyz="1.7156E-09"
+        izz="0.0022157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1_fl"
+    type="continuous">
+    <origin
+      xyz="-0.24531 -0.3683 -0.05551"
+      rpy="1.5708 -0.088599 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1_fl" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="link2_fr">
+    <inertial>
+      <origin
+        xyz="-0.00051287 0.00030252 0.067842"
+        rpy="0 0 0" />
+      <mass
+        value="0.69776" />
+      <inertia
+        ixx="0.0011572"
+        ixy="1.4786E-09"
+        ixz="-6.9974E-12"
+        iyy="0.0011718"
+        iyz="1.7156E-09"
+        izz="0.0022157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2_fr"
+    type="continuous">
+    <origin
+      xyz="0.11159 -0.3683 -0.05551"
+      rpy="-1.5708 -0.81082 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link2_fr" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="link3_bl">
+    <inertial>
+      <origin
+        xyz="0.00042861 -4.5394E-05 0.068188"
+        rpy="0 0 0" />
+      <mass
+        value="0.68237" />
+      <inertia
+        ixx="0.0011484"
+        ixy="1.4786E-09"
+        ixz="-6.9966E-12"
+        iyy="0.001163"
+        iyz="1.7156E-09"
+        izz="0.0021982" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3_bl"
+    type="continuous">
+    <origin
+      xyz="-0.20121 -0.7517 -0.05551"
+      rpy="1.5708 0.8753 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link3_bl" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link4_br">
+    <inertial>
+      <origin
+        xyz="0.00020184 -4.3664E-06 0.023775"
+        rpy="0 0 0" />
+      <mass
+        value="0.70951" />
+      <inertia
+        ixx="0.0011574"
+        ixy="1.4786E-09"
+        ixz="-6.9966E-12"
+        iyy="0.001172"
+        iyz="1.7156E-09"
+        izz="0.0022157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.69804 0.69804 0.69804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4_br"
+    type="continuous">
+    <origin
+      xyz="0.15569 -0.75167 -0.055404"
+      rpy="1.5708 -0.089686 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link4_br" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  </xacro:macro>
+</robot>

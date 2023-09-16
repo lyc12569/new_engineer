@@ -2,26 +2,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="engineer_framed">
 
 	<xacro:include filename="$(find sp_description)/urdf/engineer_framed/engineer_manipulator_framed/engineer_manipulator_framed.xacro"/>
-	<xacro:include filename="$(find sp_description)/urdf/engineer_framed/engineer_chassis_framed/engineer_chassis_framed.xacro"/>
+	<!-- <xacro:include filename="$(find sp_description)/urdf/engineer_framed/engineer_chassis_framed/engineer_chassis_framed.xacro"/> -->
 	<xacro:include filename="$(find sp_description)/urdf/engineer_manipulator/manipulator_transmission.xacro"/> 
 
     <xacro:engineer_manipulator_framed/>
-    <xacro:engineer_chassis_framed roller_type="simple"/>
-	<!-- <link name="world" />
-	<xacro:engineer_chassis_framed xyz="0 0 0" rpy="0 0 0" connected_to="world"/> -->
-
+    <!-- <xacro:engineer_chassis_framed roller_type="simple"/> -->
 	<xacro:arg name="use_simulation" default="true"/>
 
-    	<joint name="joint_arm2body" type="fixed">
-		<axis xyz="0 0 1"/>
-		<origin xyz="-0.044504 -0.55819 -0.012391" rpy="0 0 0"/>
-		<parent link="base_link"/>
-		<child link="arm_base_link"/>
-	</joint>
-		<!--在机器人模型的urdf/xacro文件中添加gazebo_ros_control插件-->
-	<gazebo>
-		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-			<robotNamespace>/</robotNamespace>
-		</plugin>
-		</gazebo>
     </robot>

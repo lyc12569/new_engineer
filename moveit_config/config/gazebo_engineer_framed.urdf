@@ -74,8 +74,8 @@
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
     </transmission>
-    <!-- <gazebo>
-        <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
+    <gazebo>
+        <plugin filename="libgazebo_ros_vacuum_gripper.so" name="gazebo_ros_vacuum_gripper">
             <robotNamespace>/vacuum_gripper</robotNamespace>
             <bodyName>vacuum_gripper</bodyName>
             <topicName>grasping</topicName>
@@ -83,18 +83,20 @@
             <maxDistance>0.05</maxDistance>
             <minDistance>0.01</minDistance>
         </plugin>
-    </gazebo>	
+        <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
     <gazebo reference="vacuum_gripper">
         <mu1>50</mu1>
         <mu2>50</mu2>
-　　　   <minDepth>0.003</minDepth>
+        <minDepth>0.003</minDepth>
         <maxVel>0</maxVel>
         <kp>10000000000000.0</kp>
         <kd>1.0</kd>
         <ki>2.0</ki>
         <material>Gazebo/Grey</material>
     </gazebo>
-	 -->
     <link name="arm_base_link">
         <inertial>
             <origin rpy="0 0 0" xyz="-0.02624 -0.018282 0.25067" />
@@ -144,7 +146,7 @@
         <parent link="arm_base_link" />
         <child link="link1" />
         <axis xyz="0 0 1" />
-        <limit effort="20" lower="-0.3012" upper="0" velocity="6" />
+        <limit effort="0" lower="-0.3012" upper="0" velocity="0" />
     </joint>
     <link name="link2">
         <inertial>
@@ -173,7 +175,7 @@
         <parent link="link1" />
         <child link="link2" />
         <axis xyz="-1 0 0" />
-        <limit effort="20" lower="0" upper="0.86634" velocity="6" />
+        <limit effort="0" lower="0" upper="0.86634" velocity="0" />
     </joint>
     <link name="link3">
         <inertial>
@@ -202,7 +204,7 @@
         <parent link="link2" />
         <child link="link3" />
         <axis xyz="-1 0 0" />
-        <limit effort="20" lower="0" upper="0.4754" velocity="6" />
+        <limit effort="0" lower="0" upper="0.4754" velocity="0" />
     </joint>
     <link name="link4">
         <inertial>
@@ -231,7 +233,7 @@
         <parent link="link3" />
         <child link="link4" />
         <axis xyz="0 1 0" />
-        <limit effort="20" lower="-0.4" upper="0.4" velocity="6" />
+        <limit effort="0" lower="-0.4" upper="0.4" velocity="0" />
     </joint>
     <link name="link5">
         <inertial>
@@ -260,7 +262,7 @@
         <parent link="link4" />
         <child link="link5" />
         <axis xyz="0 0 1" />
-        <limit effort="20" lower="0" upper="3.14" velocity="6" />
+        <limit effort="0" lower="0" upper="3.14" velocity="0" />
     </joint>
     <link name="link6">
         <inertial>
@@ -289,7 +291,7 @@
         <parent link="link5" />
         <child link="link6" />
         <axis xyz="0 0 -1" />
-        <limit effort="20" lower="-1.57" upper="1.57" velocity="6" />
+        <limit effort="0" lower="-1.57" upper="1.57" velocity="0" />
     </joint>
     <link name="link7">
         <inertial>
@@ -318,196 +320,13 @@
         <parent link="link6" />
         <child link="link7" />
         <axis xyz="0 0 1" />
-        <limit effort="20" lower="-1.57" upper="1.57" velocity="6" />
+        <limit effort="0" lower="-1.57" upper="1.57" velocity="0" />
     </joint>
-    <link name="base_link">
-        <inertial>
-            <origin rpy="0 0 0" xyz="-0.044504 -0.55819 -0.012391" />
-            <mass value="6.3166" />
-            <inertia ixx="0.040448" ixy="5.3584E-06" ixz="-4.9021E-09" iyy="0.02453" iyz="-1.0636E-06" izz="0.060871" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.65098 0.61961 0.58824 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/base_link.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <link name="link1_fl">
-        <inertial>
-            <origin rpy="0 0 0" xyz="3.6924E-05 -0.00010328 0.024042" />
-            <mass value="0.70318" />
-            <inertia ixx="0.0011574" ixy="1.4786E-09" ixz="-6.9963E-12" iyy="0.001172" iyz="1.7156E-09" izz="0.0022157" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.69804 0.69804 0.69804 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint1_fl" type="continuous">
-        <origin rpy="1.5708 -0.088599 -1.5708" xyz="-0.24531 -0.3683 -0.05551" />
-        <parent link="base_link" />
-        <child link="link1_fl" />
-        <axis xyz="0 0 -1" />
-    </joint>
-    <link name="link2_fr">
-        <inertial>
-            <origin rpy="0 0 0" xyz="-0.00051287 0.00030252 0.067842" />
-            <mass value="0.69776" />
-            <inertia ixx="0.0011572" ixy="1.4786E-09" ixz="-6.9974E-12" iyy="0.0011718" iyz="1.7156E-09" izz="0.0022157" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.69804 0.69804 0.69804 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint2_fr" type="continuous">
-        <origin rpy="-1.5708 -0.81082 -1.5708" xyz="0.11159 -0.3683 -0.05551" />
-        <parent link="base_link" />
-        <child link="link2_fr" />
-        <axis xyz="0 0 1" />
-    </joint>
-    <link name="link3_bl">
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.00042861 -4.5394E-05 0.068188" />
-            <mass value="0.68237" />
-            <inertia ixx="0.0011484" ixy="1.4786E-09" ixz="-6.9966E-12" iyy="0.001163" iyz="1.7156E-09" izz="0.0021982" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.69804 0.69804 0.69804 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint3_bl" type="continuous">
-        <origin rpy="1.5708 0.8753 -1.5708" xyz="-0.20121 -0.7517 -0.05551" />
-        <parent link="base_link" />
-        <child link="link3_bl" />
-        <axis xyz="0 0 1" />
-        <limit effort="0" lower="0" upper="0" velocity="0" />
-    </joint>
-    <link name="link4_br">
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.00020184 -4.3664E-06 0.023775" />
-            <mass value="0.70951" />
-            <inertia ixx="0.0011574" ixy="1.4786E-09" ixz="-6.9966E-12" iyy="0.001172" iyz="1.7156E-09" izz="0.0022157" />
-        </inertial>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.69804 0.69804 0.69804 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-            <geometry>
-                <mesh filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint4_br" type="continuous">
-        <origin rpy="1.5708 -0.089686 1.5708" xyz="0.15569 -0.75167 -0.055404" />
-        <parent link="base_link" />
-        <child link="link4_br" />
-        <axis xyz="0 0 1" />
-    </joint>
-    <!-- <link name="world" />
-	<xacro:engineer_chassis_framed xyz="0 0 0" rpy="0 0 0" connected_to="world"/> -->
-    <joint name="joint_arm2body" type="fixed">
-        <axis xyz="0 0 1" />
-        <origin rpy="0 0 0" xyz="-0.044504 -0.55819 -0.012391" />
-        <parent link="base_link" />
+    <link name="world" />
+    <joint name="world_joint" type="fixed">
+        <parent link="world" />
         <child link="arm_base_link" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
     </joint>
-    <!--在机器人模型的urdf/xacro文件中添加gazebo_ros_control插件-->
-    <gazebo>
-        <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
-            <robotNamespace>/engineer_framed</robotNamespace>
-        </plugin>
-    </gazebo>
-    <transmission name="trans_joint1_fl">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint1_fl">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint1_fl_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint2_fr">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint2_fr">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint2_fr_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint3_bl">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint3_bl">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint3_bl_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
-    <transmission name="trans_joint4_br">
-        <type>transmission_interface/SimpleTransmission</type>
-        <joint name="joint4_br">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        </joint>
-        <actuator name="joint4_br_motor">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-            <mechanicalReduction>1</mechanicalReduction>
-        </actuator>
-    </transmission>
 </robot>
 

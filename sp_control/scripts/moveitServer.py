@@ -28,7 +28,7 @@ class MoveIt_Control:
 
         # 初始化ROS节点
         rospy.init_node('moveit_control_server', anonymous=False)
-        self.arm = moveit_commander.MoveGroupCommander('manipulator_framed')
+        self.arm = moveit_commander.MoveGroupCommander('manipulator')
         self.arm.set_goal_joint_tolerance(0.001)
         self.arm.set_goal_position_tolerance(0.001)
         self.arm.set_goal_orientation_tolerance(0.01)
@@ -67,7 +67,7 @@ class MoveIt_Control:
         # try:
         print("Test for robot...")
         # self.go_home()
-        self.move_j([0, 0.2, 0, 0, 0.5, 0.5,0.5],a=0.5,v=0.5)
+        self.move_j([-0.1, 0.2, 0, 0, 0.5, 0.5,0.5],a=0.5,v=0.5)
         # rospy.sleep(2)
         
         # self.move_p([-0.04,0.225, 0.799, 3.1408791693424214, 0.19548416616730288, 3.1389621847279248])
@@ -285,22 +285,22 @@ def joint_value_callback(data,moveit_server):
             current_values = moveit_server.arm.get_current_joint_values()
             next_values = [-0.01,0.01,0.01,0.01,0.01,0.01,0.01]
             # joint1
-            if -0.30 <= current_values[0] + dz <= -0.01:
+            if -0.20 <= current_values[0] + dz <= -0.01:
                 next_values[0] = current_values[0] + dz
-            elif current_values[0] + dz < -0.30:
-                next_values[0] = -0.30
+            elif current_values[0] + dz < -0.20:
+                next_values[0] = -0.20
             #joint2
-            if 0 <= current_values[1] - dy <= 0.438:
+            if 0 <= current_values[1] - dy <= 0.866:
                 next_values[1] = current_values[1] - dy
-            elif current_values[1] - dy > 0.438:
-                next_values[1] = 0.438
+            elif current_values[1] - dy > 0.866:
+                next_values[1] = 0.866
             #joint4
-            if -0.17 <= current_values[3] +dx <= 0.139:
+            if -0.185 <= current_values[3] +dx <= 0.185:
                 next_values[3] = current_values[3] + dx
-            elif current_values[3] +dx > 0.139:
-                next_values[3] = 0.139
-            elif current_values[3] +dx < -0.17:
-                next_values[3] = -0.170
+            elif current_values[3] +dx > 0.185:
+                next_values[3] = 0.158
+            elif current_values[3] +dx < -0.185:
+                next_values[3] = -0.185
             #joint5
             if 0 <= current_values[4] + dyaw <= np.pi:
                 next_values[4] = current_values[4] + dyaw
@@ -354,8 +354,26 @@ def plan_callback(data,moveit_server):
             # next_pose[5] = cyaw + dyaw
             # # print(next_pose)
             # moveit_server.move_p(next_pose)   
-                
-        
+
+def plan_callback(data,moveit_server):
+    # rospy.loginfo(rospy.get_caller_id() + "I heard %s", data) 
+    global controller_values_initial,droll,dpitch,dyaw,dx,dy,dz
+    if controller_values_initial == empty:
+        controller_values_initial = data
+    else:
+        (roll, pitch, yaw) = euler_from_quaternion([data.pose.orientation.x, data.pose.orientation.y, data.pose.orientation.z, data.pose.orientation.w])
+        roll_last, pitch_last,yaw_last = euler_from_quaternion([controller_values_initial.pose.orientation.x, controller_values_initial.pose.orientation.y,
+                                                                controller_values_initial.pose.orientation.z, controller_values_initial.pose.orientation.w])
+        droll = roll - roll_last
+        dpitch = pitch - pitch_last
+        dyaw = yaw - yaw_last
+        dx = data.pose.position.x - controller_values_initial.pose.position.x
+        dy = data.pose.position.y - controller_values_initial.pose.position.y
+        dz = data.pose.position.z - controller_values_initial.pose.position.z
+        controller_values_initial = data
+        if droll != 0 or dpitch != 0 or dyaw != 0 or dx != 0 or dy != 0 or dz != 0:
+            current_pose = moveit_server.arm.get_current_pose()
+            print(current_pose)
         
 if __name__ =="__main__":
     moveit_server = MoveIt_Control(is_use_gripper=False)
@@ -366,8 +384,8 @@ if __name__ =="__main__":
     # print(current_values)
     # rospy.init_node("listener_pose")
     # #3.实例化 订阅者 对象
-    sub = rospy.Subscriber("/ORB_SLAM3/pose",PoseStamped,plan_callback,moveit_server,queue_size=1)
-    rospy.spin()
+    # sub = rospy.Subscriber("/ORB_SLAM3/pose",PoseStamped,joint_value_callback,moveit_server,queue_size=1)
+    # rospy.spin()
  
     
 

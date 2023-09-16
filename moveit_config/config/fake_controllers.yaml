@@ -10,5 +10,5 @@ controller_list:
       - joint6
       - joint7
 initial:  # Define initial robot poses per group
-  - group: manipulator_framed
+  - group: manipulator
     pose: home

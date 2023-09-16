@@ -8,20 +8,20 @@
   
   <xacro:macro name="engineer_chassis_framed" params="roller_type">
 
-  <link
+ <link
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.044504 -0.55819 -0.012391"
+        xyz="-0.0018086 0.00030067 0.12012"
         rpy="0 0 0" />
       <mass
         value="6.3166" />
       <inertia
-        ixx="0.040448"
-        ixy="5.3584E-06"
-        ixz="-4.9021E-09"
-        iyy="0.02453"
-        iyz="-1.0636E-06"
+        ixx="0.02453"
+        ixy="-5.3584E-06"
+        ixz="1.0636E-06"
+        iyy="0.040448"
+        iyz="-4.9021E-09"
         izz="0.060871" />
     </inertial>
     <visual>
@@ -49,7 +49,7 @@
     </collision>
   </link>
   <link
-    name="link1_fl">
+    name="link1_br">
     <inertial>
       <origin
         xyz="3.6924E-05 -0.00010328 0.024042"
@@ -70,7 +70,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_br.STL" />
       </geometry>
       <material
         name="">
@@ -84,38 +84,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_fl.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link1_br.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint1_fl"
+    name="joint1_br"
     type="continuous">
     <origin
-      xyz="-0.24531 -0.3683 -0.05551"
-      rpy="1.5708 -0.088599 -1.5708" />
+      xyz="-0.1917 -0.2005 0.077"
+      rpy="1.5708 -0.088599 0" />
     <parent
       link="base_link" />
     <child
-      link="link1_fl" />
+      link="link1_br" />
     <axis
       xyz="0 0 -1" />
   </joint>
   <link
-    name="link2_fr">
+    name="link2_bl">
     <inertial>
       <origin
-        xyz="-0.00051287 0.00030252 0.067842"
+        xyz="-0.00013404 0.023742 -0.00058016"
         rpy="0 0 0" />
       <mass
         value="0.69776" />
       <inertia
-        ixx="0.0011572"
-        ixy="1.4786E-09"
-        ixz="-6.9974E-12"
-        iyy="0.0011718"
-        iyz="1.7156E-09"
-        izz="0.0022157" />
+        ixx="0.0011649"
+        ixy="1.2388E-09"
+        ixz="-7.2836E-06"
+        iyy="0.0022157"
+        iyz="-1.187E-09"
+        izz="0.0011641" />
     </inertial>
     <visual>
       <origin
@@ -123,7 +123,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_bl.STL" />
       </geometry>
       <material
         name="">
@@ -137,38 +137,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_fr.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link2_bl.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint2_fr"
+    name="joint2_bl"
     type="continuous">
     <origin
-      xyz="0.11159 -0.3683 -0.05551"
-      rpy="-1.5708 -0.81082 -1.5708" />
+      xyz="-0.1917 0.2005 0.077"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
-      link="link2_fr" />
+      link="link2_bl" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 1 0" />
   </joint>
   <link
-    name="link3_bl">
+    name="link3_fr">
     <inertial>
       <origin
-        xyz="0.00042861 -4.5394E-05 0.068188"
+        xyz="0.00023979 -0.024088 -0.00035815"
         rpy="0 0 0" />
       <mass
         value="0.68237" />
       <inertia
-        ixx="0.0011484"
-        ixy="1.4786E-09"
-        ixz="-6.9966E-12"
-        iyy="0.001163"
-        iyz="1.7156E-09"
-        izz="0.0021982" />
+        ixx="0.001157"
+        ixy="-1.3127E-09"
+        ixz="7.1752E-06"
+        iyy="0.0021982"
+        iyz="-1.1047E-09"
+        izz="0.0011544" />
     </inertial>
     <visual>
       <origin
@@ -176,7 +176,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_fr.STL" />
       </geometry>
       <material
         name="">
@@ -190,22 +190,22 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_bl.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link3_fr.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint3_bl"
+    name="joint3_fr"
     type="continuous">
     <origin
-      xyz="-0.20121 -0.7517 -0.05551"
-      rpy="1.5708 0.8753 -1.5708" />
+      xyz="0.1917 -0.2005 0.077"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
-      link="link3_bl" />
+      link="link3_fr" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 -1 0" />
     <limit
       lower="0"
       upper="0"
@@ -213,20 +213,20 @@
       velocity="0" />
   </joint>
   <link
-    name="link4_br">
+    name="link4_fl">
     <inertial>
       <origin
-        xyz="0.00020184 -4.3664E-06 0.023775"
+        xyz="-0.00020142 0.023775 1.3729E-05"
         rpy="0 0 0" />
       <mass
         value="0.70951" />
       <inertia
-        ixx="0.0011574"
-        ixy="1.4786E-09"
-        ixz="-6.9966E-12"
-        iyy="0.001172"
-        iyz="1.7156E-09"
-        izz="0.0022157" />
+        ixx="0.0011576"
+        ixy="1.6063E-10"
+        ixz="1.2997E-06"
+        iyy="0.0022157"
+        iyz="1.7081E-09"
+        izz="0.0011719" />
     </inertial>
     <visual>
       <origin
@@ -234,7 +234,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_fl.STL" />
       </geometry>
       <material
         name="">
@@ -248,23 +248,22 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_br.STL" />
+          filename="package://sp_description/meshes/engineer_framed/engineer_chassis/link4_fl.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="joint4_br"
+    name="joint4_fl"
     type="continuous">
     <origin
-      xyz="0.15569 -0.75167 -0.055404"
-      rpy="1.5708 -0.089686 1.5708" />
+      xyz="0.19167 0.2005 0.077106"
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
-      link="link4_br" />
+      link="link4_fl" />
     <axis
-      xyz="0 0 1" />
+      xyz="0 1 0" />
   </joint>
-
   </xacro:macro>
 </robot>

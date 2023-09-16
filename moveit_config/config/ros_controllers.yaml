@@ -1,7 +1,7 @@
 # Simulation settings for using moveit_sim_controllers
 moveit_sim_hw_interface:
-  joint_model_group: manipulator_framed
-  joint_model_group_pose: gripper
+  joint_model_group: manipulator
+  # joint_model_group_pose: home
 # Settings for ros_control_boilerplate control loop
 generic_hw_control_loop:
   loop_hz: 300
@@ -20,9 +20,7 @@ hardware_interface:
   sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
-joint_state_controller:
-  type: joint_state_controller/JointStateController
-  publish_rate: 50
+
 controller_list:
   - name: manipulator_framed_controller
     action_ns: follow_joint_trajectory
@@ -36,22 +34,66 @@ controller_list:
       - joint5
       - joint6
       - joint7
-    
+  
+
+# manipulator_framed_controller:
+#     type: effort_controllers/JointGroupPositionController
+#     joints:
+#         - joint1
+#         - joint2
+#         - joint3
+#         - joint4
+#         - joint5
+#         - joint6
+#         - joint7
+  
+#     joint1 :
+#         pid: { p: 100000, d: 200, i: 5, i_clamp: 10000 }
+#     joint2 :
+#         pid: { p: 18000, d: 100, i: 1, i_clamp: 10000 }
+#     joint3 :
+#         pid: { p: 1000, d: 150, i: 0.1, i_clamp: 1 }
+#     joint4 :
+#         pid: { p: 1000, d: 100, i: 0.1, i_clamp: 10000 }
+#     joint5 :
+#         pid: { p: 100, d: 2, i: 0.5, i_clamp: 1 }
+#     joint6 :
+#         pid: { p: 100, d: 10, i: 1, i_clamp: 1 }
+#     joint7 :
+#         pid: { p: 100, d: 1, i: 0.2, i_clamp: 1 }
+
+
+# manipulator_framed_controller:
+#   type: position_controllers/JointTrajectoryController
+#   joints:
+#       - joint1
+#       - joint2
+#       - joint3
+#       - joint4
+#       - joint5
+#       - joint6
+#       - joint7
+#   constraints:
+#       goal_time: 0.6
+#       stopped_velocity_tolerance: 0.05
+#       joint1: {trajectory: 0.1, goal: 0.1}
+#       joint2: {trajectory: 0.1, goal: 0.1}
+#       joint3: {trajectory: 0.1, goal: 0.1}
+#       joint4: {trajectory: 0.1, goal: 0.1}
+#       joint5: {trajectory: 0.1, goal: 0.1}
+#       joint6: {trajectory: 0.1, goal: 0.1}
+#       joint7: {trajectory: 0.1, goal: 0.1}
+#   stop_trajectory_duration: 0.5
+#   state_publish_rate:  25
+#   action_monitor_rate: 10
+# joint_group_position_controller:
 manipulator_framed_controller:
-    type: effort_controllers/JointTrajectoryController
-    joints:
-        - joint1
-        - joint2
-        - joint3
-        - joint4
-        - joint5
-        - joint6
-        - joint7
-    gains:
-        joint1: { p: 100000, d: 100, i: 0.01, i_clamp: 10000 }
-        joint2: { p: 30000, d: 10, i: 0.01, i_clamp: 10000 }
-        joint3: { p: 18000, d: 10, i: 0.01, i_clamp: 1 }
-        joint4: { p: 18000, d: 10, i: 0.01, i_clamp: 10000 }
-        joint5: { p: 12000, d: 10, i: 0.01, i_clamp: 1 }
-        joint6: { p: 7000, d: 10, i: 0.01, i_clamp: 1 }
-        joint7: { p: 2000, d: 10, i: 0.01, i_clamp: 1 }
+  type: position_controllers/JointGroupPositionController
+  joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+      - joint6
+      - joint7

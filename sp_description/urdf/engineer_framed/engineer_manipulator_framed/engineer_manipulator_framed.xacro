@@ -101,16 +101,16 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.2012"
+       lower="-0.3012"
       upper="0"
-      effort="20"
+      effort="2000"
       velocity="6" />
   </joint>
   <link
     name="link2">
     <inertial>
       <origin
-        xyz="0.73763 -0.012605 0.269937"
+        xyz="0.73763 -0.012605 0.069937"
         rpy="0 0 0" />
       <mass
         value="3.3677" />
@@ -161,7 +161,7 @@
     <limit
       lower="0"
       upper="0.86634"
-      effort="20"
+      effort="200"
       velocity="6" />
   </joint>
   <link
@@ -219,7 +219,7 @@
     <limit
       lower="0"
       upper="0.4754"
-      effort="20"
+      effort="200"
       velocity="6" />
   </joint>
   <link
@@ -275,9 +275,9 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-0.185"
-      upper="0.185"
-      effort="20"
+      lower="-0.2"
+      upper="0.2"
+      effort="200"
       velocity="6" />
   </joint>
   <link
@@ -334,8 +334,8 @@
       xyz="0 0 1" />
     <limit
       lower="0"
-      upper="3.14"
-      effort="20"
+       upper="3.14"
+      effort="200"
       velocity="6" />
   </joint>
   <link
@@ -391,9 +391,9 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="-1.57"
+       lower="-1.57"
       upper="1.57"
-      effort="20"
+      effort="200"
       velocity="6" />
   </joint>
   <link
@@ -451,8 +451,17 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="20"
-      velocity="6" />
+      effort="100"
+      velocity="12" />
   </joint>
+
+    <link name="world" />
+
+    <joint name="world_joint" type="fixed">
+      <parent link="world" />
+      <child link = "arm_base_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
    </xacro:macro>
 </robot>
